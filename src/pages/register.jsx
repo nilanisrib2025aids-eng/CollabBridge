@@ -1,84 +1,61 @@
 
-import { Link } from 'react-router-dom'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { Link, useNavigate } from 'react-router-dom'
+import { registerschema } from '../schemas/registerschema'
 
 function Register() {
+    const navigate=useNavigate();
+    const{register,handleSubmit,formState:{errors}}=useForm({
+        resolver:zodResolver(registerschema)
+    })
+    function onSubmit1(data){
+        console.log(data)
+        alert("Registration Successful")
+        navigate("/")
+    }
     return (
-        <div className="min-h-screen bg-slate-100 flex items-center justify-center p-5">
-            <div className="bg-white w-full max-w-lg p-8 rounded-xl shadow-md">
-                <h1 className="text-3xl font-bold text-blue-600 text-center">
-                    CollabBridge
-                </h1>
-                <h2 className="text-2xl font-semibold text-center mt-4">
-                    Create Your Account
-                </h2>
-                <p className="text-gray-500 text-center mt-2">
-                    Join students and start collaborating.
-                </p>
-                <form className="mt-8 space-y-4">
-                    <div>
-                        <label className="block mb-2 font-medium">
-                            Full Name
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Enter your name" required
-                            className="w-full border p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
-                    <div>
-                        <label className="block mb-2 font-medium">
-                            Email Address
-                        </label>
-                        <input
-                            type="email"
-                            placeholder="Enter your email" required
-                            className="w-full border p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
-                    <div>
-                        <label className="block mb-2 font-medium">
-                            College Name
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Enter your college name" required
-                            className="w-full border p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
-                    <div>
-                        <label className="block mb-2 font-medium">
-                            Department
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Enter your department" required
-                            className="w-full border p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
-                    <div>
-                        <label className="block mb-2 font-medium">
-                            Password
-                        </label>
-                        <input
-                            type="password"
-                            placeholder="Create a password" required
-                            className="w-full border p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                    </div>
-                    <button
-                        type="submit"
-                        className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700"
-                    >
-                        Create Account
-                    </button>
-                </form>
-                <p className="text-center text-gray-600 mt-6">
-                    Already have an account?
-                    <Link to="/login" className="text-blue-600 font-semibold ml-1">
-                        Login
-                    </Link>
-                </p>
-            </div>
+        <div>
+            <h1>CollabBridge</h1>
+            <h2>Create Your Account</h2>
+            <form onSubmit={handleSubmit(onSubmit1)}>
+
+                <label>Name:</label>
+                <input type="text" placeholder="Enter your name" {...register("name")}/>
+                <br /><br />
+                <p>{errors.name?.message}</p>
+
+                <label>Email:</label>
+                <input type="email" placeholder="Enter your email" {...register("email")}/>
+                <br /><br />
+                <p>{errors.email?.message}</p>
+
+                <label>College Name:</label>
+                <input type="text" placeholder="Enter your college" {...register("college")}/>
+                <br /><br />
+                <p>{errors.college?.message}</p>
+
+                <label>Department:</label>
+                <input type="text" placeholder="Enter your department" {...register("department")}/>
+                <br /><br />
+                <p>{errors.department?.message}</p>
+
+                <label>Preferred Area:</label>
+                <input type="text" placeholder="Enter preferred area" {...register("preferredArea")}/>
+                <br /><br />
+                <p>{errors.preferredArea?.message}</p>
+
+                <label>Password:</label>
+                <input type="password" placeholder="Create password" {...register("password")}/>
+                <br /><br />
+                <p>{errors.password?.message}</p>
+
+                <button type="submit">Register</button>
+            </form>
+            <p>
+                Already have an account?
+                <Link to="/login"> Login</Link>
+            </p>
         </div>
     )
 }
