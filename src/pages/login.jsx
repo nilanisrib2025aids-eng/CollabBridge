@@ -9,7 +9,7 @@ function Login() {
                     CollabBridge
                 </h1>
                 <h2 className="text-2xl font-semibold text-center mt-4">
-                    Welcome Back!
+                    Welcome Back!!
                 </h2>
                 <p className="text-gray-500 text-center mt-2">
                     Login to continue your collaboration journey.
