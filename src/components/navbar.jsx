@@ -1,15 +1,16 @@
 
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
 function Navbar() {
     return (
-        <nav>
-            <h1>CollabBridge</h1>
-            <Link to="/">Home | </Link>
-            <Link to={"/how it works"}>How It Works | </Link>
-            <Link to={"/features"}>Features | </Link>
-            <Link to="/login">Login | </Link>
-            <Link to="/register">Register</Link>
+        <nav className="bg-blue-900 text-white p-4">
+            <h1 className="text-2xl font-bold mb-3 sm:mb-0">CollabBridge</h1>
+            <Link to="/" className="justify-center gap-4">Home | </Link>
+            <Link to={"/how-it-works"} className="justify-center gap-4">How It Works | </Link>
+            <Link to={"/features"} className="justify-center gap-4">Features | </Link>
+            <Link to="/login" className="justify-center gap-4">Login | </Link>
+            <Link to="/register" className="justify-center gap-4">Register</Link>
+            <Outlet/>
         </nav>
     )
 }
