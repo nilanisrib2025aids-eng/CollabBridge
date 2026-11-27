@@ -1,4 +1,5 @@
 
+import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/navbar'
 
 function Home() {
@@ -13,7 +14,7 @@ function Home() {
                 </p>
                 <a href="/register">Get Started</a>
             </div>
-            <div id="how-it-works">
+            <div>
                 <h2>How It Works</h2>
                 <h3>1. Create Your Profile</h3>
                 <p>Register and enter your college details.</p>
