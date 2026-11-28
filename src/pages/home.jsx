@@ -10,7 +10,7 @@ function Home() {
                 <h1 className="text-3xl sm:text-5xl font-bold text-blue-900 mb-5">Build Projects Together, Grow Together.</h1>
                 <p className="text-gray-700 text-base sm:text-lg mb-6">
                     Connect with students from different colleges.
-                    Share your project ideas and find your teammates.
+                    Share your project ideas, and find your teammates.
                 </p>
                 <Link to={"/register"} className="inline-block bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-green-900">Get Started</Link>
             </div>
